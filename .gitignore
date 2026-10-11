@@ -1,0 +1,8 @@
+.env
+.env.*
+!.env.example
+venv/
+venv_old/
+__pycache__/
+*.__pyc
+homework 0/flask_app/database/resume.db
