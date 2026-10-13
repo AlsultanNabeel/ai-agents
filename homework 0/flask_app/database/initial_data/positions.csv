@@ -1,5 +1,4 @@
 "position_id","inst_id","title","responsibilities","start_date","end_date"
-"1","1","Instructor","Teach classes; mostly NLP and Web design.","2019-01-01",NULL
-"2","1","Researcher","Perform research at interface of AI and healthcare.","2019-01-01",NULL
-"3","2","National Scholar","Helped the government plan the future of science","2021-01-01","2021-12-31"
-"4","3","Associate Director","Used data science to assess corporation and nations","2019-01-01","2020-01-01"
+"1","1","Student","Studied for a BSc in Computer Science.","2019-09-01","2023-06-30"
+"2","2","Student","Studying at AUC; focus on AI and Agents","2024-09-01",NULL
+"3","3","Roastery Worker","Work online as freelancer","2024-01-01",NULL
