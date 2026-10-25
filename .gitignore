@@ -1,0 +1,6 @@
+.env
+venv/
+__pycache__/
+*.py[cod]
+homework 0/csv_backup/
+homework 0/flask_app/database/resume.db

@@ -1,4 +1,10 @@
 "inst_id","type","name","department","address","city","state","zip"
-"1","Academia","Michigan State University","Computer Science",NULL,"East Lansing","Michigan",NULL
-"2","Government","National Institutes of Health",NULL,NULL,"Bethesda","Maryland",NULL
-"3","Industry","Standard and Poor's Financial Services","Ratings",NULL,"New York City","New York",NULL
+"1","Industry","Bayyinah","Video Production Department",NULL,NULL,NULL,NULL
+"2","Academia","The American University in Cairo","Transfer Office Unit",NULL,"Cairo","Egypt",NULL
+"3","Academia","The Caravan, AUC","Student Press Magazine",NULL,"Cairo","Egypt",NULL
+"4","Academia","The American University in Cairo","Digital Transformation Center",NULL,"Cairo","Egypt",NULL
+"5","Academia","The American University in Cairo","Center for Learning and Teaching",NULL,"Cairo","Egypt",NULL
+"6","Academia","The American University in Cairo","Rhetoric and Composition Department",NULL,"Cairo","Egypt",NULL
+"7","Industry","Eden, EG","Summer Internship",NULL,NULL,"Egypt",NULL
+"8","Nonprofit","Sabeel Foundation","AUC",NULL,"Cairo","Egypt",NULL
+"9","Academia","The American University in Cairo","Center for Learning and Teaching - Design Thinking Sprint",NULL,"Cairo","Egypt",NULL

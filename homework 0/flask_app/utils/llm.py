@@ -26,7 +26,7 @@ OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
 # See all available models at: https://openrouter.ai/models
 # QUESTION: What would change if you switched to a different model?
 #           Try 'google/gemma-2-9b-it:free' or 'mistralai/mistral-7b-instruct:free'.
-DEFAULT_MODEL = "nvidia/nemotron-3-super-120b-a12b:free"
+DEFAULT_MODEL = "nvidia/nemotron-3.5-lightning: free"
 
 
 def send_message(user_message, system_prompt="You are a helpful assistant."):
@@ -93,6 +93,7 @@ def send_message(user_message, system_prompt="You are a helpful assistant."):
     # of 'choices' — this happens with a bad API key or an invalid request.
     # QUESTION: Print result here and see what OpenRouter actually sends back.
     if 'error' in result:
+        print("OpenRouter error details:", result)
         error_message = result['error'].get('message', 'Unknown API error')
         return f"⚠️ OpenRouter error: {error_message}"
 

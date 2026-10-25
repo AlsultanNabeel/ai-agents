@@ -1,5 +1,10 @@
 "position_id","inst_id","title","responsibilities","start_date","end_date"
-"1","1","Instructor","Teach classes; mostly NLP and Web design.","2019-01-01",NULL
-"2","1","Researcher","Perform research at interface of AI and healthcare.","2019-01-01",NULL
-"3","2","National Scholar","Helped the government plan the future of science","2021-01-01","2021-12-31"
-"4","3","Associate Director","Used data science to assess corporation and nations","2019-01-01","2020-01-01"
+"1","1","Video Content Editor","Review Arabic and English digital content; revise Arabic commentary translations for the Revealed app; collaborate with an international team to deliver high-quality digital media.","2026-05-01",NULL
+"2","2","Registrar Assistant","Enter transfer credit data into Microsoft Excel; transfer information from student transcripts into organized electronic records.","2026-07-01","2026-07-31"
+"3","3","Editor & Writer","Edit articles for clarity, consistency, and publication quality; produce Arabic content for AUC's official student publication.","2026-02-01","2026-05-31"
+"4","4","User Experience Research Intern","Collect and organize student data; assist with survey design and distribution; support analysis of user feedback to improve AUC's digital services.","2025-11-01","2025-12-31"
+"5","5","Graphic Designer","Design instructional presentations using Google Slides; collaborate with subject matter experts; maintain visual consistency and effective information hierarchy.","2025-10-01","2025-12-31"
+"6","6","Research Writing Teaching Assistant","Support students with research questions, arguments, and academic writing; assist with workshops, feedback, and evaluations.","2025-09-01","2025-12-31"
+"7","7","Technical Intern","Conduct requirements engineering for AI agents automating financial tasks; set up Frappe and Raven; test AI agents in ERPNext and report outcomes.","2025-07-01","2025-07-31"
+"8","8","Co-head and Graphic Designer","Design social media posts and printed promotional materials; collaborate on visual content for workshops and community activities; support event branding and promotional campaigns.","2024-10-01","2026-05-31"
+"9","9","Design Thinking Sprint Participant","Apply empathy mapping, Crazy 8 sketching, and wireframing to improve university registration; collaborate on user-centered solutions for Banner 9.","2025-02-01","2025-02-28"
