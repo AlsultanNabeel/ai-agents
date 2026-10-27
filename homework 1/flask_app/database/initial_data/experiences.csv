@@ -1,0 +1,23 @@
+"experience_id","position_id","name","description","hyperlink","start_date","end_date"
+"1","1","Content Review","Review Arabic and English digital content while maintaining high editorial standards.",NULL,"2026-05-01",NULL
+"2","1","Arabic Translation Editing","Revise and edit Arabic commentary translations for the Revealed app, ensuring accuracy, coherence, and fluent, natural language.",NULL,"2026-05-01",NULL
+"3","1","International Collaboration","Collaborate with an international team to deliver high-quality digital media.",NULL,"2026-05-01",NULL
+"4","2","Transfer Credit Data Entry","Enter transfer credit data into Microsoft Excel with accuracy and attention to detail.",NULL,"2026-07-01","2026-07-31"
+"5","2","Student Records Management","Transfer information from student transcripts into organized, up-to-date electronic records.",NULL,"2026-07-01","2026-07-31"
+"6","3","Article Editing","Edit articles for clarity, consistency, and publication quality.",NULL,"2026-02-01","2026-05-31"
+"7","3","Arabic Content Writing","Produce Arabic content for AUC's official student publication.",NULL,"2026-02-01","2026-05-31"
+"8","4","Student Data Research","Collect and organize student data for ongoing user research initiatives.",NULL,"2025-11-01","2025-12-31"
+"9","4","Survey Design","Assist in designing and distributing surveys to enhance AUC's digital services.",NULL,"2025-11-01","2025-12-31"
+"10","4","User Feedback Analysis","Support analysis of user feedback to inform experience improvements across platforms.",NULL,"2025-11-01","2025-12-31"
+"11","5","Instructional Presentation Design","Design instructional presentations for specialized university courses using Google Slides.",NULL,"2025-10-01","2025-12-31"
+"12","5","Visual Content Collaboration","Collaborate with subject matter experts to create engaging instructional materials and maintain visual consistency and effective information hierarchy.",NULL,"2025-10-01","2025-12-31"
+"13","6","Academic Writing Support","Support students in constructing research questions, developing arguments, and refining academic writing.",NULL,"2025-09-01","2025-12-31"
+"14","6","Workshops and Feedback","Assist in workshops, feedback sessions, and evaluations to enhance clarity, coherence, and source engagement in student papers.",NULL,"2025-09-01","2025-12-31"
+"15","7","Requirements Engineering for AI Agents","Conduct requirements engineering to identify and design AI agents for automating financial tasks.",NULL,"2025-07-01","2025-07-31"
+"16","7","Development Environment Setup","Set up the local Frappe and Raven environment and simulate business workflows for analysis.",NULL,"2025-07-01","2025-07-31"
+"17","7","AI Agent Testing","Test AI agents in ERPNext by designing test cases, validating system behavior, and reporting outcomes.",NULL,"2025-07-01","2025-07-31"
+"18","8","Graphic Design and Promotion","Design social media posts and printed promotional materials for events and initiatives.",NULL,"2024-10-01","2026-05-31"
+"19","8","Team Collaboration","Collaborate with cross-functional teams to develop visual content for workshops and community activities.",NULL,"2024-10-01","2026-05-31"
+"20","8","Event Branding","Support event branding and promotional campaigns.",NULL,"2024-10-01","2026-05-31"
+"21","9","Design Thinking Methods","Apply empathy mapping, Crazy 8 sketching, and wireframing to improve the university registration experience.",NULL,"2025-02-01","2025-02-28"
+"22","9","User-Centered Solution Design","Collaborate with students, faculty, and administrators to develop user-centered solutions for Banner 9.",NULL,"2025-02-01","2025-02-28"
