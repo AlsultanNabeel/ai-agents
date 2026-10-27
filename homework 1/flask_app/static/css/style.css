@@ -1,0 +1,426 @@
+/*
+  style.css — all styling for the AI Resume Agent app.
+
+  This is plain CSS — no frameworks, no build tools. Every rule here
+  directly controls the appearance of an HTML element.
+
+  HOW TO CUSTOMIZE:
+    Look for the NOTE comments below to find the most useful things to change:
+    colors, fonts, spacing, and layout.
+
+  SECTIONS:
+    1. Global / Reset
+    2. Navigation
+    3. Home Page
+    4. Resume Layout
+    5. Resume Content (institutions, positions, skills)
+    6. Chat Panel
+    7. Utilities
+*/
+
+
+/* ================================================================
+   1. GLOBAL / RESET
+   ================================================================
+   These rules apply to every element on every page.
+   NOTE: Change the font-family below to use a different typeface.
+         Google Fonts are a popular free option — add a <link> in layout.html
+         and then reference the font name here.
+*/
+
+* {
+  box-sizing: border-box;   /* padding/border don't expand element size */
+  margin: 0;
+  padding: 0;
+}
+
+html, body { height: 100%; }
+
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #2d2d2d;
+  background: #f7f8fa;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;   /* prevents whole-page scroll; inner sections scroll on their own */
+}
+
+h1 { font-size: 2rem;   margin-bottom: 0.5rem; }
+h2 { font-size: 1.5rem; margin-bottom: 0.4rem; }
+h3 { font-size: 1.1rem; margin-bottom: 0.2rem; }
+
+a {
+  color: #2563eb;
+  text-decoration: none;
+}
+a:hover { text-decoration: underline; }
+
+code {
+  background: #eef;
+  padding: 0.1em 0.3em;
+  border-radius: 3px;
+  font-size: 0.9em;
+}
+
+
+/* ================================================================
+   2. NAVIGATION
+   ================================================================
+   NOTE: Change background to update the nav bar color.
+*/
+
+nav {
+  background: #1e293b;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  height: 56px;
+}
+
+.nav-title {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.nav-links a {
+  color: #cbd5e1;
+  margin-left: 1.5rem;
+  font-size: 0.95rem;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover {
+  color: white;
+  text-decoration: none;
+}
+
+
+/* ================================================================
+   3. HOME PAGE
+   ================================================================
+*/
+
+.home-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+  flex: 1;             /* fills space between nav and footer */
+  overflow-y: auto;    /* scrolls if the bio is long, since body no longer scrolls */
+  width: 100%;
+}
+
+.profile-section {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  margin-bottom: 3rem;
+}
+
+/* NOTE: Change border-radius to make the photo square (0) or more rounded (50%) */
+.profile-photo {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 12px;
+  flex-shrink: 0;
+}
+
+.profile-text h1 { color: #1e293b; }
+
+.subtitle {
+  color: #64748b;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.profile-text p {
+  color: #374151;
+  margin-bottom: 1.2rem;
+}
+
+.btn {
+  display: inline-block;
+  background: #2563eb;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  transition: background 0.2s;
+}
+.btn:hover {
+  background: #1d4ed8;
+  text-decoration: none;
+}
+
+.info-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.2rem;
+}
+
+.card {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 1.2rem;
+}
+.card h3 {
+  color: #1e293b;
+  margin-bottom: 0.5rem;
+}
+.card p { color: #4b5563; font-size: 0.95rem; }
+
+
+/* ================================================================
+   4. RESUME LAYOUT
+   ================================================================
+   Two columns: resume content on the left, chat panel on the right.
+   On small screens (phones), they stack vertically.
+
+   NOTE: Change the 380px value to make the chat panel wider or narrower.
+*/
+
+.resume-layout {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  grid-template-rows: minmax(0, 1fr);   /* single row that fills the height without growing past it */
+  gap: 0;
+  flex: 1;                              /* fills leftover space between nav and footer */
+  min-height: 0;                        /* required for a flex child that must shrink */
+  overflow: hidden;                     /* clip columns so they scroll internally, not the page */
+}
+
+/* Stack columns on small screens */
+@media (max-width: 768px) {
+  body { overflow: auto; }                /* let the page scroll on mobile */
+  .resume-layout {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;        /* stacked, natural height */
+    flex: none;
+    overflow: visible;
+  }
+  .resume-content, .chat-log { overflow: visible; }
+}
+
+.resume-content {
+  padding: 2rem;
+  overflow-y: auto;
+  background: #f7f8fa;
+}
+
+
+/* ================================================================
+   5. RESUME CONTENT
+   ================================================================
+*/
+
+.institution {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.institution h2 { color: #1e293b; }
+
+.institution-meta {
+  color: #64748b;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.position {
+  border-left: 3px solid #2563eb;
+  padding-left: 1rem;
+  margin: 1rem 0;
+}
+
+.position-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.position-header h3 { color: #1e293b; }
+
+.date-range {
+  color: #64748b;
+  font-size: 0.85rem;
+}
+
+.responsibilities {
+  color: #4b5563;
+  font-size: 0.9rem;
+  margin: 0.3rem 0 0.8rem;
+}
+
+.experience {
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+  color: #374151;
+}
+
+.experience-name { font-weight: 600; }
+.experience-desc { color: #6b7280; }
+
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.4rem;
+}
+
+/* NOTE: Change background/color to restyle skill badges */
+.skill-badge {
+  background: #eff6ff;
+  color: #1d4ed8;
+  border: 1px solid #bfdbfe;
+  border-radius: 4px;
+  padding: 0.15rem 0.5rem;
+  font-size: 0.8rem;
+}
+
+.skill-level {
+  color: #3b82f6;
+  font-size: 0.75rem;
+  margin-left: 0.2rem;
+}
+
+
+/* ================================================================
+   6. CHAT PANEL
+   ================================================================
+   NOTE: Change chat-panel background to restyle the chat area.
+         Change .msg-user background/color to restyle user messages.
+         Change .msg-ai background/color to restyle AI messages.
+*/
+
+.chat-panel {
+  display: flex;
+  flex-direction: column;
+  border-left: 1px solid #e2e8f0;
+  background: white;
+}
+
+.chat-header {
+  background: #1e293b;
+  color: white;
+  padding: 0.8rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.chat-status-dot {
+  width: 10px;
+  height: 10px;
+  background: #22c55e;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}
+
+.chat-log {
+  flex: 1;
+  min-height: 0;     /* prevents flex child from growing past container bounds */
+  overflow-y: auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.msg-user, .msg-ai {
+  padding: 0.6rem 0.8rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  max-width: 90%;
+  word-wrap: break-word;
+}
+
+.msg-user {
+  background: #2563eb;
+  color: white;
+  align-self: flex-end;
+}
+
+.msg-ai {
+  background: #f1f5f9;
+  color: #1e293b;
+  align-self: flex-start;
+}
+
+/* Contain markdown content (tables, code, long words) inside the bubble */
+.msg-ai p        { margin: 0.3rem 0; }
+.msg-ai ul,
+.msg-ai ol       { margin: 0.3rem 0; padding-left: 1.2rem; }
+.msg-ai pre,
+.msg-ai code     { white-space: pre-wrap; word-wrap: break-word; font-size: 0.85rem; }
+.msg-ai table    { display: block; overflow-x: auto; max-width: 100%; font-size: 0.8rem; }
+.msg-ai th,
+.msg-ai td       { border: 1px solid #cbd5e1; padding: 0.2rem 0.4rem; }
+
+.msg-ai.typing {
+  color: #94a3b8;
+  font-style: italic;
+}
+
+.chat-input-area {
+  padding: 0.8rem;
+  border-top: 1px solid #e2e8f0;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.chat-input {
+  flex: 1;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  padding: 0.5rem 0.7rem;
+  font-size: 0.9rem;
+  font-family: inherit;
+  resize: none;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.chat-input:focus { border-color: #2563eb; }
+
+.chat-send-btn {
+  background: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.chat-send-btn:hover { background: #1d4ed8; }
+
+
+/* ================================================================
+   7. FOOTER
+   ================================================================
+*/
+
+footer {
+  background: #1e293b;
+  color: #94a3b8;
+  text-align: center;
+  padding: 0.8rem;
+  font-size: 0.85rem;
+}

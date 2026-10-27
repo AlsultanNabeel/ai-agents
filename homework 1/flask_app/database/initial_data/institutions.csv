@@ -1,0 +1,4 @@
+"inst_id","type","name","department","address","city","state","zip"
+"1","Academia","Islamic University of Gaza","Computer Science",NULL,"Gaza",NULL,NULL
+"2","Academia","American University in Cairo","Computer Science",NULL,"New Cairo","Cairo",NULL
+"3","Industry","freelancing","programing",NULL,"6th of October City","Giza",NULL
