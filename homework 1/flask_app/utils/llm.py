@@ -30,7 +30,7 @@ OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
 # See all available models at: https://openrouter.ai/models
 # QUESTION: What would change if you switched to a different model?
 #           Try 'google/gemma-2-9b-it:free' or 'mistralai/mistral-7b-instruct:free'.
-DEFAULT_MODEL = "recursive/flint-v1.0:free"
+DEFAULT_MODEL = "nvidia/nemotron-3.5-super-vl:free"
 
 # One shared template for every expert's system prompt. Each expert just
 # fills in different values for role/domain/instructions/context/examples.
@@ -131,7 +131,7 @@ def send_message(user_message, system_prompt="You are a helpful assistant."):
     )
 
     result = response.json()
-
+      # QUESTION: Print result here and see what OpenRouter actually sends back.
     # OpenRouter sometimes returns HTTP 200 but with an 'error' field instead
     # of 'choices' — this happens with a bad API key or an invalid request.
     # QUESTION: Print result here and see what OpenRouter actually sends back.
