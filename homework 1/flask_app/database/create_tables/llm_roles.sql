@@ -1,0 +1,5 @@
+CREATE TABLE IF NOT EXISTS llm_roles (
+    role_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    role_name TEXT NOT NULL UNIQUE,
+    system_prompt TEXT NOT NULL
+);
