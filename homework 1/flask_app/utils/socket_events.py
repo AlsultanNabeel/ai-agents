@@ -83,6 +83,13 @@ def handle_message(data):
              if experience_id is None:
                 ai_response = f"Experience '{experience_name}' was not found."
              else:
+                print("Database Write Expert Python code:")
+                print(
+                    f"current_app.db.addSkill({skill_name!r}, "
+                    f"{int(skill_level)}, {experience_id!r})",
+                    flush=True
+                )
+                
                 current_app.db.addSkill(
                     skill_name, int(skill_level), experience_id
                 )

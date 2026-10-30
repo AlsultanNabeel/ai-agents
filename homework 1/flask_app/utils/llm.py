@@ -190,6 +190,9 @@ IMPORTANT:
 When asked about programming skills, SELECT from the skills table.
 Use skills.name and skills.skill_level.
 Do not search experience descriptions to identify skills.
+Never return tool calls, function calls, or <|tool_call_start|> tokens.
+Output only raw SQLite SELECT SQL, beginning with SELECT.
+When checking a skill in an experience, match experiences.name and skills.name using LOWER(TRIM(...)).
 """
     sql = send_message(question, system_prompt)
 
@@ -212,6 +215,9 @@ def database_write_expert(db, request):
     Example: SQL|7|Computer Engineering Studies
 
     Do not return Python code, SQL, markdown, or explanations.
+    The experience name must match the actual name in the resume.
+    Do not include generic words such as "experience" in the experience name.
+    For example, "Frontend development training experience" means "Frontend development training".
     """
  
     response = send_message(request, system_prompt).strip()

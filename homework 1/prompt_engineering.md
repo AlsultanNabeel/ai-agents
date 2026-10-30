@@ -4,7 +4,7 @@
 
 The AI system uses different roles for different responsibilities: Database Read Expert, Database Write Expert, Content Expert, and Orchestrator.
 
-Effectiveness: Separating responsibilities helped organize database operations and conversational responses. The Read Expert successfully generated SQL to retrieve the Python skill level.
+Effectiveness: The system successfully handled a compound React request. The Orchestrator selected both the Database Read Expert and Database Write Expert, checked whether React existed, requested user confirmation, and saved React with skill level 8. The new skill appeared automatically on the resume and remained visible after refreshing the page.
 
 2. Structured Output Instructions
 
