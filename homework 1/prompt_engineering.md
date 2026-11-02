@@ -15,7 +15,6 @@ Effectiveness: This helped each expert focus on its task. During testing, the Re
 2. One-Shot Prompting
 
 One-Shot Prompting means providing one example to guide the AI's response.
-
 I used this technique in the "few_shot_examples" column of "llm_roles.csv", where I provided a sample question and its expected SQL query.
 
 Effectiveness: During testing, the Read Expert returned SQL queries in the expected format. However, I did not compare the results without the example, so I cannot measure its exact effect.
