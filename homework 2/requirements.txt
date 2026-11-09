@@ -1,0 +1,8 @@
+# Requirements for the AI Resume Agent app
+# Install all of these with: pip install -r requirements.txt
+
+flask==3.1.0          # web framework: handles routes, templates, and HTTP
+flask-socketio==5.3.6 # adds real-time WebSocket support to Flask
+eventlet==0.35.2      # lets Flask handle many WebSocket connections at once
+requests==2.32.3      # lets Python make HTTP calls (used to contact OpenRouter)
+python-dotenv==1.0.1  # reads the .env file so we don't hardcode secrets in code
