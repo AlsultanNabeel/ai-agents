@@ -1,9 +1,12 @@
 import json
 import os
-
+import math
 import requests
 
 EMBEDDINGS_URL = "https://openrouter.ai/api/v1/embeddings"
+
+# I chose it from measure of the wrong and true ones which is start from 0.15 for the true and the false ome reached only 0.13  
+DEFAULT_MIN_SCORE = 0.15
 
 # For each table: its ID column, and which columns make up the embedded text
 TEXT_COLUMNS = {
@@ -92,4 +95,45 @@ def sync_embeddings(db):
     for key in set(stored) - current:
         db.query("DELETE FROM embeddings WHERE source_table = ? AND record_id = ?", key)
         print(f"[Embeddings] removed {key[0]} #{key[1]}")
+
+
+
+
+
+def cosine_similarity(a, b):
+    dot = sum(x * y for x, y in zip(a, b))
+    norm_a = math.sqrt(sum(x * x for x in a))
+    norm_b = math.sqrt(sum(y * y for y in b))
+    if not norm_a or not norm_b:
+        return 0.0
+    return dot / (norm_a * norm_b)
+
+
+def search(db, query, tables=None, top_k=5, min_score=None):
+    if min_score is None:
+        min_score = float(os.getenv('SEARCH_MIN_SCORE') or DEFAULT_MIN_SCORE)
+
+    query_vector = get_embedding(query)
+
+    sql = "SELECT source_table, record_id, text, vector FROM embeddings"
+    params = ()
+    if tables:
+        sql += f" WHERE source_table IN ({', '.join('?' for _ in tables)})"
+        params = tuple(tables)
+
+    results = []
+    for row in db.query(sql, params):
+        score = cosine_similarity(query_vector, json.loads(row['vector']))
+        if score < min_score:
+            continue
+
+        results.append({
+            'table': row['source_table'],
+            'id': row['record_id'],
+            'text': row['text'],
+            'score': round(score, 3),
+        })
+
+    results.sort(key=lambda result: result['score'], reverse=True)
+    return results[:top_k]
 
