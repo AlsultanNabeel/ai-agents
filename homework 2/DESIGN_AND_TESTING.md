@@ -83,21 +83,23 @@ flowchart TD
 
 ## 4. Testing
 
-The local test runner currently executes S6, S7, S8, and S10. The remaining scenarios require API-backed testing and must not be treated as passing until executed.
+The local test runner currently executes S6, S7, S8, and S10. The other scenarios have not yet been executed by the current runner.
+
+Some scenarios can be tested using mocked AI responses and real database operations. Others require the actual embedding API to verify semantic search integration.
 
 | Scenario / what I typed | What should happen | What actually happened | Pass / fail | Evidence |
 |---|---|---|---|---|
-| S1 — Search by meaning | Relevant records should be returned and ranked by similarity. | Requires API configuration; not executed in the latest test run. | API REQUIRED | Not yet available. |
-| S2 — Search by abbreviation/category | Relevant records should be found and ranked. | Requires API configuration; not executed in the latest test run. | API REQUIRED | Not yet available. |
-| S3 — Structured database query | The Database Read Expert should handle the request. | Requires API configuration; not executed in the latest test run. | API REQUIRED | Not yet available. |
-| S4 — Dependent expert steps | The required experts should execute in sequence. | Requires API configuration; not executed in the latest test run. | API REQUIRED | Not yet available. |
-| S5 — Restart persistence | Resume records and stored embeddings should remain available after restarting the application. | Requires API configuration in the current test runner; not executed in the latest run. | API REQUIRED | Not yet available. |
+| S1 — Search by meaning | Relevant records should be returned and ranked by similarity. | Not yet executed by the test runner. | NOT TESTED | Not yet available. |
+| S2 — Search by abbreviation/category | Relevant records should be found and ranked. | Not yet executed by the test runner. | NOT TESTED | Not yet available. |
+| S3 — Structured database query | The Database Read Expert should handle the request and execute a safe query. | Not yet executed by the test runner. | NOT TESTED | Not yet available. |
+| S4 — Dependent expert steps | The required experts should execute in sequence. | Not yet executed by the test runner. | NOT TESTED | Not yet available. |
+| S5 — Restart persistence | Resume records and stored embeddings should remain available after restarting the application. | Not yet executed by the test runner. | NOT TESTED | Not yet available. |
 | S6 — Reject a proposed deletion with `no` | The proposed deletion is cancelled and the database remains unchanged. | The skill remained in the database and the proposal was cancelled. | PASS | Local test output and before/after database counts. |
 | S7 — Approve a proposed deletion with `yes` | Only the exact proposed skill is deleted. | The approved skill was deleted. The trace outcome was corrected to report `completed` after checking the database operation's return status. | PASS | Local test output and trace outcome. |
 | S8 — Reply ambiguously or change the subject while approval is pending | Ambiguous replies must not execute the action. A new request must invalidate the old proposal. | Ambiguous replies left the proposal waiting. A new request invalidated the previous proposal, so a later confirmation could not execute it. | PASS | Local test output and pending-action state. |
-| S9 — Grounded response | Responses should be based on retrieved data and honestly report when no matching data is found. | Requires API configuration; not executed in the latest test run. | API REQUIRED | Not yet available. |
+| S9 — Grounded response | Responses should be based on retrieved data and honestly report when no matching data is found. | Not yet executed by the test runner. | NOT TESTED | Not yet available. |
 | S10 — Embedding generation failure | The error should be reported without corrupting the database or preventing normal database operations. | The mocked embedding failure was handled, and the database remained usable. | PASS | Local test output showing the handled `EmbeddingError`. |
-| S11 — API or operation failure | The system should report the failure honestly and remain usable. | Requires API configuration; not executed in the latest test run. | API REQUIRED | Not yet available. |
+| S11 — API or operation failure | The system should report the failure honestly and remain usable. | Not yet executed by the test runner. | NOT TESTED | Not yet available. |
 
 ### Test results
 
@@ -107,13 +109,15 @@ The latest local test run reported:
 - S7: PASS
 - S8: PASS
 - S10: PASS
-- S1–S5, S9, and S11: API REQUIRED
+- S1–S5, S9, and S11: NOT TESTED
 
 The test command was:
 
 ```bash
 python tests/run_scenarios.py
 ```
+
+The remaining scenarios will be added to the test runner using isolated database operations and mocked AI responses where appropriate. S1 and S2 will also require testing the actual embedding API integration.
 
 These results demonstrate the locally tested approval and embedding-failure behavior, but do not establish that all eleven scenarios pass.
 
