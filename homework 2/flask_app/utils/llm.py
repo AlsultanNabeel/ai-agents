@@ -410,14 +410,19 @@ def execute_write_action(db, generated_json):
                 ):
                     raise ValueError("Invalid experience ID.")
 
-            candidates = db.query(
-                """
-                SELECT skill_id, name
-                FROM skills
-                WHERE experience_id IS ?
-                """,
-                (experience_id,)
-            )
+            if experience_id is None:
+                candidates = db.query(
+                    "SELECT skill_id, name FROM skills"
+                )
+            else:
+                candidates = db.query(
+                    """
+                    SELECT skill_id, name
+                    FROM skills
+                    WHERE experience_id = ?
+                    """,
+                    (experience_id,)
+                )
 
             matches = [
                 item for item in candidates

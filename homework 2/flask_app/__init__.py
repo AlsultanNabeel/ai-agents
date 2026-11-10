@@ -56,6 +56,12 @@ def create_app():
     db.createTables(purge=False)
     print("Database ready.")
 
+    from flask_app.utils.embeddings import embed_missing_records
+
+    print("Generating missing embeddings...")
+    embedding_results = embed_missing_records(db)
+    print(f"Embedding initialization complete: {embedding_results}")
+
     # Connect Socket.IO to the Flask app
     socketio.init_app(app)
 
