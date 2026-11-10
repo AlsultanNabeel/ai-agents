@@ -65,8 +65,7 @@ def handle_message(data):
             db, role="Orchestrator", message=user_message
     )
     except Exception as error:
-        import traceback
-        traceback.print_exc()
+        print(f"LLM error: {error}")
         ai_response = f"⚠️ Could not reach the AI: {error}"
 
     # Emit the reply back — the browser's socket.on('receive_message') picks this up
