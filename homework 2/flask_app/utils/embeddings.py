@@ -5,7 +5,7 @@ import requests
 
 EMBEDDINGS_URL = "https://openrouter.ai/api/v1/embeddings"
 
-# I chose it from measure of the wrong and true ones which is start from 0.15 for the true and the false ome reached only 0.13  
+# I chose it from measure of the wrong and true ones which is start from 0.15 for the true and the false ome reached only 0.13 
 DEFAULT_MIN_SCORE = 0.15
 
 # For each table: its ID column, and which columns make up the embedded text

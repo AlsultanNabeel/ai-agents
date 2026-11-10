@@ -21,7 +21,21 @@ HOW EVENTS WORK:
 from flask_socketio import emit
 from flask_app import socketio
 from flask_app.utils.llm import handle_ai_chat_request
-from flask import current_app
+from flask_app.utils.operations import perform_operation, ApprovalRequired
+from flask import current_app, request
+import itertools
+
+# Actions waiting for yes/no, one per open chat (keyed by the Socket.IO session id)
+pending_actions = {}
+
+# Every chat message gets its own number in the trace
+request_ids = itertools.count(1)
+
+
+def end_trace(request_id, approval, response):
+    print(f"[#{request_id}] approval: {approval} | outcome: {response[:150]!r}")
+    print(f"===== End of request #{request_id}\n")
+
 
 # This is set by create_app() in __init__.py so this file can use the database.
 
@@ -50,12 +64,49 @@ def handle_message(data):
     db = current_app.db
     if not user_message:
         return
+
+    request_id = next(request_ids)
+    print(f"\n===== Request #{request_id}: {user_message!r}")
+    approval = "none"
+    notice = ""
+    pending = pending_actions.pop(request.sid, None)
+    if pending:
+        answer = user_message.lower().strip(" .!")
+        if answer == "yes":
+            # Run exactly the stored action; the message is never sent to the model again
+            print(f"[Approval] approved: {pending}")
+            try:
+                ai_response = perform_operation(db, pending, approved=True)
+            except Exception as error:
+                print(f"[Approval] approved action failed: {error}")
+                ai_response = "Operation was unsuccessful."
+            end_trace(request_id, "approved", ai_response)
+            emit('receive_message', {'response': ai_response})
+            return
+        if answer == "no":
+            print(f"[Approval] cancelled by user: {pending}")
+            ai_response = "Cancelled. Nothing was changed."
+            end_trace(request_id, "cancelled", ai_response)
+            emit('receive_message', {'response': ai_response})
+            return
+        # Anything else cancels the waiting action, then is answered as a new message
+        print(f"[Approval] cancelled (reply was not yes/no): {pending}")
+        notice = "Your earlier request was cancelled. Nothing was changed.\n\n"
+        approval = "cancelled (earlier request)"
+
     try:
         ai_response = handle_ai_chat_request(db, role="Orchestrator", message=user_message)
+    except ApprovalRequired as waiting:
+        pending_actions[request.sid] = waiting.operation
+        print(f"[Approval] waiting: {waiting.operation}")
+        ai_response = f"{waiting} Reply yes or no."
+        approval = "waiting"
     except Exception as error:
         print(f"LLM error: {error}")
         ai_response = "Sorry, something went wrong answering that."
-    emit('receive_message', {'response': ai_response})
+    end_trace(request_id, approval, notice + ai_response)
+    emit('receive_message', {'response': notice + ai_response})
+
 
 
 
