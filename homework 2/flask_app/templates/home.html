@@ -1,0 +1,86 @@
+{% extends 'layout.html' %}
+{#
+  home.html - the landing page of your AI agent portfolio.
+
+  This page extends layout.html, which provides the nav bar and footer.
+  Everything inside the block content / endblock tags is YOUR content.
+
+  NOTE: This is one of the two files you should customize for the homework.
+        Replace the placeholder text and image below with your own bio.
+        The other file to edit is flask_app/database/initial_data/*.csv
+#}
+
+{% block content %}
+
+<div class="home-container">
+
+  <!-- Profile section -->
+  <div class="profile-section">
+
+    <!--
+      Profile photo — replace headshot.png with your own image.
+      Put your image file in flask_app/static/images/ and update the filename below.
+    -->
+    <img
+      src="{{ url_for('static', filename='images/headshot.png') }}"
+      alt="Profile photo"
+      class="profile-photo"
+    >
+
+    <div class="profile-text">
+
+      <!-- NOTE: Replace this with your own name -->
+      <h1>Nabeel Alsultan</h1>
+
+      <!-- NOTE: Replace this with your own title or tagline -->
+      <p class="subtitle">flask programmer · Computer Science · Islamic University of Gaza</p>
+
+      <!--
+        NOTE: Replace this paragraph with your own bio (2–4 sentences).
+        What do you study? What are you interested in? What's a fun fact about you?
+      -->
+      <p>
+        I'm a software engineer from Gaza with a BSc in Computer Science, now studying at AUC.
+        I build embedded and AI projects, like Sandy, a voice-interactive ESP32 robot, and work as an online freelancer.
+      </p>
+
+      <a href="/resume" class="btn">View My Resume →</a>
+
+    </div>
+  </div>
+
+  <!-- Course info section -->
+  <div class="info-cards">
+
+    <div class="card">
+      <h3>What This App Is</h3>
+      <p>
+        This is your AI Agent portfolio — a web application that uses a language model
+        to answer questions about your resume. By the end of the semester, you'll extend
+        it with more sophisticated agents.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>How to Customize</h3>
+      <p>
+        Edit the CSV files in <code>flask_app/database/initial_data/</code> to add your
+        own resume data, then restart the app. Edit this file (<code>home.html</code>)
+        to update your bio and photo.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Try the AI Chat</h3>
+      <p>
+        Visit the <a href="/resume">Resume page</a> and ask the AI assistant a question
+        about the resume. The chat panel on the right reads your resume data directly
+        from the database before answering.
+      </p>
+    </div>
+
+  </div>
+
+</div>
+
+{% endblock %}

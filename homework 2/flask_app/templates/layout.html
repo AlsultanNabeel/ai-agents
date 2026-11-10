@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+{#
+  layout.html - the base template that every page extends.
+
+  JINJA2 TEMPLATE INHERITANCE:
+    Instead of copying the head, nav, and footer into every page,
+    we define them once here. Other templates "extend" this file and fill
+    in the "block content" section with their own content.
+
+    In home.html and resume.html you will see:
+        extends 'layout.html'
+        block content ... your page content here ... endblock
+
+    Jinja2 is the templating language Flask uses. It runs on the server
+    before the browser receives the HTML.
+#}
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CSE 491 — AI Agents</title>
+
+  <!-- Our custom stylesheet — edit flask_app/static/css/style.css to change the look -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="icon"       href="{{ url_for('static', filename='images/favicon.ico') }}">
+</head>
+
+<body>
+
+  <!-- Navigation bar — shown on every page -->
+  <nav>
+    <span class="nav-title">CSE 491 — AI Agents</span>
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/resume">Resume</a>
+    </div>
+  </nav>
+
+  <!-- Each page fills in this block with its own content -->
+  {% block content %}{% endblock %}
+
+  <!-- Footer — shown on every page -->
+  <footer>
+    <p>© 2025 Mohammad M. Ghassemi</p>
+  </footer>
+
+</body>
+</html>

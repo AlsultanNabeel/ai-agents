@@ -1,0 +1,7 @@
+"experience_id","position_id","name","description","hyperlink","start_date","end_date"
+"1","1","CSE 477","Taught an introductory course on web application design.","https://www.youtube.com/@ghassemi",NULL,NULL
+"2","1","CSE 847","Taught a hands-on introduction to Natural Language Processing.","https://www.youtube.com/@ghassemi",NULL,NULL
+"3","2","Feature Imitating Networks","Developed a new kind of neural network that is better faster and stronger.","https://ghassemi.xyz","2020-01-01",NULL
+"4","3","BRAINWORKS","Developed a platform to organize the scientific literature as a knowledge graph.","https://github.com/deskool/brainworks-public","2020-01-01",NULL
+"5","3","BRIDGE2AI","Developed a $100M initiative to assist with AI research.","https://commonfund.nih.gov/bridge2ai","2020-01-01",NULL
+"6","1","CSE 491","Taught a hands-on introduction to AI Agents.",NULL,NULL,NULL

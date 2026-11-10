@@ -1,0 +1,5 @@
+"experience_id","position_id","name","description","hyperlink","start_date","end_date"
+"1","1","Graduation Project","Project make it easy for people in Gaza to access the humanitarian aid",NULL,NULL,NULL
+"2","2","Sandy Robot","Built a voice-interactive robot on ESP32-S3 with a cloud backend.",NULL,"2025-03-07",NULL
+"3","2","CSE 491 - AI Agents","Taking a hands-on course on building AI agents.",NULL,"2026-09-01",NULL
+"4","3","Freelance Projects","Digital marketing and SEO services.",NULL,"2024-01-01",NULL
